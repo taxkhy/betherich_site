@@ -3,1142 +3,1115 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>비더리치 | 부자가 되는 세무전략</title>
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Wanted+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>세무법인 로마 | 가족법인 설립부터 운영까지</title>
+<meta name="description" content="가족법인 설립 5일 완료. 주주총회·이사회·배당설계·세무기장까지 원스톱. 세무법인 로마">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+/*═══════════════════════════════════════════
+  CSS VARIABLES
+═══════════════════════════════════════════*/
 :root {
-  --bg: #FDFBF7;
-  --bg-warm: #F5F0E8;
-  --bg-card: #FFFFFF;
-  --text-primary: #1A1A18;
-  --text-secondary: #5A5A54;
-  --text-tertiary: #8C8C82;
-  --accent: #B8541A;
-  --accent-light: #E8956A;
-  --accent-bg: #FFF5EF;
-  --green: #2D6A4F;
-  --green-bg: #E8F5EE;
-  --border: #E8E4DC;
-  --border-light: #F0EDE6;
-  --shadow: 0 2px 20px rgba(0,0,0,0.04);
-  --shadow-hover: 0 8px 40px rgba(0,0,0,0.08);
+  --ink: #111827;
+  --ink-80: #1F2937;
+  --ink-60: #374151;
+  --ink-40: #6B7280;
+  --ink-20: #9CA3AF;
+  --ink-10: #D1D5DB;
+  --ink-05: #F3F4F6;
+  --ink-02: #F9FAFB;
+  --white: #FFFFFF;
+  --roma: #8B5E34;
+  --roma-deep: #6B4226;
+  --roma-light: #C4956A;
+  --roma-bg: #FAF6F1;
+  --roma-bg2: #F2EBE3;
+  --accent: #BE3A2B;
+  --accent-bg: #FEF2F0;
+  --green: #15803D;
+  --green-bg: #F0FDF4;
+  --blue: #1D4ED8;
+  --blue-bg: #EFF6FF;
+  --warn: #D97706;
+  --warn-bg: #FFFBEB;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow: 0 4px 16px rgba(0,0,0,0.07);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.1);
+  --font-serif: 'Noto Serif KR', serif;
+  --font-sans: 'Pretendard', -apple-system, sans-serif;
+}
+/*═══════════════════════════════════════════
+  RESET & BASE
+═══════════════════════════════════════════*/
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--white);line-height:1.7;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+button{font-family:inherit;cursor:pointer;}
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-thumb{background:var(--roma-light);border-radius:3px;}
+
+/*═══════════════════════════════════════════
+  NAVIGATION
+═══════════════════════════════════════════*/
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:0 2rem;height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--ink-10);
+  transition:box-shadow 0.3s;
+}
+.nav.scrolled{box-shadow:var(--shadow);}
+.nav-logo{display:flex;align-items:center;gap:0.5rem;}
+.nav-mark{
+  width:32px;height:32px;background:var(--roma);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  color:white;font-family:var(--font-serif);font-weight:900;font-size:0.85rem;
+}
+.nav-name{font-weight:800;font-size:0.95rem;color:var(--ink);}
+.nav-name small{display:block;font-weight:400;font-size:0.7rem;color:var(--ink-40);margin-top:-2px;}
+.nav-links{display:flex;align-items:center;gap:1.8rem;}
+.nav-links a{font-size:0.85rem;font-weight:500;color:var(--ink-60);transition:color 0.3s;}
+.nav-links a:hover{color:var(--roma);}
+.nav-cta{
+  padding:0.55rem 1.4rem;background:var(--roma);color:white;
+  border:none;border-radius:8px;font-weight:700;font-size:0.8rem;
+  transition:all 0.3s;
+}
+.nav-cta:hover{background:var(--roma-deep);transform:translateY(-1px);}
+.nav-menu-btn{display:none;background:none;border:none;font-size:1.4rem;color:var(--ink);}
+
+/*═══════════════════════════════════════════
+  HERO — 핵심 메시지
+═══════════════════════════════════════════*/
+.hero{
+  padding:7.5rem 2rem 4rem;
+  background:var(--roma-bg);
+  position:relative;overflow:hidden;
+}
+.hero::after{
+  content:'';position:absolute;top:-50%;right:-20%;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(139,94,52,0.06) 0%,transparent 70%);
+}
+.hero-inner{max-width:720px;margin:0 auto;text-align:center;position:relative;z-index:2;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  padding:0.4rem 1rem;background:var(--white);
+  border:1px solid var(--ink-10);border-radius:24px;
+  font-size:0.78rem;font-weight:600;color:var(--roma);
+  margin-bottom:1.5rem;
+}
+.badge-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;}
+.hero h1{
+  font-family:var(--font-serif);font-size:clamp(1.8rem,4.5vw,2.8rem);
+  font-weight:900;line-height:1.45;color:var(--ink);
+  margin-bottom:1.2rem;
+}
+.hero h1 .em{color:var(--roma);}
+.hero h1 .warn-line{
+  position:relative;display:inline;
+}
+.hero h1 .warn-line::after{
+  content:'';position:absolute;bottom:2px;left:0;right:0;
+  height:10px;background:rgba(190,58,43,0.12);z-index:-1;
+}
+.hero-sub{
+  font-size:1.05rem;color:var(--ink-60);
+  line-height:1.85;margin-bottom:2.5rem;
+}
+.hero-sub strong{color:var(--accent);font-weight:700;}
+.hero-ctas{display:flex;gap:0.8rem;justify-content:center;flex-wrap:wrap;}
+.btn-main{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  padding:0.9rem 2rem;background:var(--roma);color:white;
+  border:none;border-radius:10px;font-weight:700;font-size:0.95rem;
+  transition:all 0.3s;
+}
+.btn-main:hover{background:var(--roma-deep);transform:translateY(-2px);box-shadow:var(--shadow-lg);}
+.btn-sub{
+  padding:0.9rem 2rem;background:var(--white);color:var(--ink);
+  border:1.5px solid var(--ink-10);border-radius:10px;font-weight:600;font-size:0.95rem;
+  transition:all 0.3s;
+}
+.btn-sub:hover{border-color:var(--roma);color:var(--roma);}
+
+/*═══════════════════════════════════════════
+  경고 배너 — "설립만 하면 끝?" Lock-in 메시지
+═══════════════════════════════════════════*/
+.warn-banner{
+  background:var(--ink);color:white;
+  padding:2.5rem 2rem;text-align:center;
+}
+.warn-inner{max-width:800px;margin:0 auto;}
+.warn-banner h2{
+  font-family:var(--font-serif);font-size:1.4rem;font-weight:700;
+  margin-bottom:0.8rem;
+}
+.warn-banner h2 span{color:var(--warn);}
+.warn-banner p{color:rgba(255,255,255,0.65);font-size:0.9rem;line-height:1.8;}
+.warn-stats{
+  display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;
+  margin-top:1.5rem;
+}
+.ws{
+  padding:0.6rem 1.2rem;background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.1);border-radius:8px;
+  font-size:0.8rem;
+}
+.ws strong{color:var(--warn);font-weight:800;}
+
+/*═══════════════════════════════════════════
+  SECTION COMMON
+═══════════════════════════════════════════*/
+section{padding:5rem 2rem;}
+.sec-inner{max-width:1080px;margin:0 auto;}
+.sec-label{
+  font-size:0.72rem;font-weight:700;color:var(--roma);
+  letter-spacing:3px;text-transform:uppercase;margin-bottom:0.5rem;
+}
+.sec-title{
+  font-family:var(--font-serif);font-size:clamp(1.5rem,3vw,2rem);
+  font-weight:900;margin-bottom:0.6rem;
+}
+.sec-desc{color:var(--ink-40);font-size:0.95rem;max-width:560px;}
+.center{text-align:center;}
+.center .sec-desc{margin:0 auto;}
+
+/*═══════════════════════════════════════════
+  무료 콘텐츠 섹션 — 가족법인 유형 선택
+═══════════════════════════════════════════*/
+.types-section{background:var(--white);}
+.type-selector{
+  display:flex;gap:0.5rem;justify-content:center;flex-wrap:wrap;
+  margin:2rem 0 2.5rem;
+}
+.type-btn{
+  padding:0.6rem 1.4rem;background:var(--ink-05);
+  border:1.5px solid transparent;border-radius:8px;
+  font-size:0.85rem;font-weight:600;color:var(--ink-60);
+  transition:all 0.3s;
+}
+.type-btn.active{
+  background:var(--roma-bg);border-color:var(--roma);color:var(--roma);
+}
+.type-btn:hover:not(.active){border-color:var(--ink-20);}
+
+/* 유형별 카드 */
+.type-panel{display:none;}
+.type-panel.active{display:block;animation:fadeUp 0.4s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+
+.type-card{
+  background:var(--white);border:1px solid var(--ink-10);
+  border-radius:var(--radius-lg);padding:2.5rem;
+  box-shadow:var(--shadow-sm);
+  display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;
+  align-items:start;
+}
+.tc-left h3{
+  font-family:var(--font-serif);font-size:1.4rem;
+  font-weight:700;margin-bottom:0.8rem;
+}
+.tc-left .tc-desc{color:var(--ink-60);font-size:0.9rem;line-height:1.8;margin-bottom:1.5rem;}
+.tc-who{margin-bottom:1.5rem;}
+.tc-who h4{font-size:0.8rem;color:var(--roma);font-weight:700;margin-bottom:0.6rem;letter-spacing:1px;}
+.tc-who-list{list-style:none;}
+.tc-who-list li{
+  padding:0.4rem 0;font-size:0.88rem;color:var(--ink-60);
+  display:flex;align-items:center;gap:0.5rem;
+}
+.tc-who-list li::before{content:'✓';color:var(--green);font-weight:800;font-size:0.8rem;}
+.tc-left .btn-main{font-size:0.85rem;padding:0.7rem 1.5rem;}
+
+/* 우측: 무료 교육 콘텐츠 */
+.tc-right{background:var(--ink-02);border-radius:var(--radius);padding:1.8rem;}
+.tc-right h4{
+  font-size:0.8rem;color:var(--ink-40);font-weight:700;
+  letter-spacing:1px;margin-bottom:1rem;
+  display:flex;align-items:center;gap:0.4rem;
+}
+.free-tag{
+  background:var(--green-bg);color:var(--green);
+  padding:0.15rem 0.5rem;border-radius:4px;font-size:0.7rem;font-weight:800;
+}
+.edu-item{
+  padding:0.8rem 0;border-bottom:1px solid var(--ink-10);
+  display:flex;gap:0.8rem;align-items:start;
+  cursor:pointer;transition:all 0.3s;
+}
+.edu-item:last-child{border-bottom:none;}
+.edu-item:hover{padding-left:0.3rem;}
+.edu-num{
+  width:28px;height:28px;background:var(--roma-bg);
+  border-radius:6px;display:flex;align-items:center;justify-content:center;
+  font-size:0.75rem;font-weight:800;color:var(--roma);flex-shrink:0;
+}
+.edu-item h5{font-size:0.88rem;font-weight:600;margin-bottom:0.1rem;}
+.edu-item p{font-size:0.78rem;color:var(--ink-40);}
+
+/*═══════════════════════════════════════════
+  "설립은 20%" — 운영의 중요성 (Lock-in 핵심)
+═══════════════════════════════════════════*/
+.lockin{background:var(--roma-bg);}
+.lockin-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:2rem;margin-top:2.5rem;
+}
+.lockin-left{
+  background:var(--white);border:1px solid var(--ink-10);
+  border-radius:var(--radius-lg);padding:2rem;
+  box-shadow:var(--shadow-sm);
+}
+.lockin-left h3{
+  font-family:var(--font-serif);font-size:1.2rem;
+  margin-bottom:1.5rem;color:var(--accent);
+}
+.risk-item{
+  display:flex;gap:0.8rem;padding:1rem 0;
+  border-bottom:1px solid var(--ink-05);
+}
+.risk-item:last-child{border-bottom:none;}
+.risk-icon{
+  width:40px;height:40px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;flex-shrink:0;
+}
+.risk-icon.red{background:var(--accent-bg);}
+.risk-icon.orange{background:var(--warn-bg);}
+.risk-item h5{font-size:0.9rem;font-weight:700;margin-bottom:0.2rem;}
+.risk-item p{font-size:0.8rem;color:var(--ink-40);line-height:1.6;}
+
+.lockin-right{
+  background:var(--ink);border-radius:var(--radius-lg);
+  padding:2rem;color:white;
+}
+.lockin-right h3{
+  font-family:var(--font-serif);font-size:1.2rem;
+  margin-bottom:0.5rem;
+}
+.lockin-right>p{font-size:0.85rem;color:rgba(255,255,255,0.5);margin-bottom:1.5rem;}
+.mgmt-item{
+  padding:1rem;background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:10px;margin-bottom:0.8rem;
+  transition:border-color 0.3s;
+}
+.mgmt-item:hover{border-color:var(--roma-light);}
+.mgmt-item h5{font-size:0.9rem;font-weight:700;margin-bottom:0.2rem;display:flex;align-items:center;gap:0.4rem;}
+.mgmt-item h5 .tag-must{
+  font-size:0.6rem;padding:0.15rem 0.4rem;
+  background:var(--accent);color:white;border-radius:3px;font-weight:800;
+}
+.mgmt-item p{font-size:0.78rem;color:rgba(255,255,255,0.5);line-height:1.6;}
+.lockin-right .btn-main{
+  width:100%;justify-content:center;margin-top:1rem;
+  background:var(--roma-light);color:var(--ink);
+}
+.lockin-right .btn-main:hover{background:var(--roma);;color:white;}
+
+/*═══════════════════════════════════════════
+  프로세스 — 설립 5단계 + 이후 운영 강조
+═══════════════════════════════════════════*/
+.process-sec{background:var(--white);}
+.process-track{
+  display:flex;gap:0;margin-top:2.5rem;
+  position:relative;overflow-x:auto;
+  padding-bottom:1rem;
+}
+.process-track::before{
+  content:'';position:absolute;top:38px;left:0;right:0;
+  height:2px;background:var(--ink-10);
+}
+.p-step{
+  flex:1;min-width:160px;position:relative;
+  text-align:center;padding:0 0.5rem;
+}
+.p-dot{
+  width:28px;height:28px;border-radius:50%;
+  background:var(--roma);color:white;
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.7rem;font-weight:800;
+  margin:24px auto 1rem;position:relative;z-index:2;
+  box-shadow:0 0 0 4px var(--white);
+}
+.p-step.future .p-dot{
+  background:var(--accent);
+  box-shadow:0 0 0 4px var(--white),0 0 0 8px rgba(190,58,43,0.15);
+}
+.p-step h5{font-size:0.85rem;font-weight:700;margin-bottom:0.2rem;}
+.p-step p{font-size:0.75rem;color:var(--ink-40);}
+.p-divider{
+  flex:0 0 auto;display:flex;align-items:start;
+  padding-top:32px;margin:0 -8px;
+  font-size:0.85rem;color:var(--accent);font-weight:800;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+/*═══════════════════════════════════════════
+  자가진단
+═══════════════════════════════════════════*/
+.quiz-sec{background:var(--ink-02);}
+.quiz-box{
+  max-width:680px;margin:2rem auto 0;
+  background:var(--white);border:1px solid var(--ink-10);
+  border-radius:var(--radius-lg);padding:2.5rem;
+  box-shadow:var(--shadow);
+}
+.quiz-progress{
+  height:4px;background:var(--ink-05);border-radius:2px;
+  margin-bottom:2rem;overflow:hidden;
+}
+.quiz-bar{height:100%;background:var(--roma);border-radius:2px;transition:width 0.4s;width:0%;}
+.q-item{
+  display:flex;align-items:center;gap:1rem;
+  padding:0.9rem 1.2rem;border:1.5px solid var(--ink-10);
+  border-radius:10px;margin-bottom:0.6rem;
+  cursor:pointer;transition:all 0.3s;
+  -webkit-user-select:none;user-select:none;
+}
+.q-item:hover{border-color:var(--roma-light);}
+.q-item.on{border-color:var(--roma);background:var(--roma-bg);}
+.q-check{
+  width:22px;height:22px;border:2px solid var(--ink-20);
+  border-radius:6px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.7rem;color:transparent;transition:all 0.3s;
+}
+.q-item.on .q-check{border-color:var(--roma);background:var(--roma);color:white;}
+.q-item span{font-size:0.9rem;font-weight:500;}
+.quiz-result{
+  display:none;margin-top:1.5rem;padding:1.5rem;
+  border-radius:var(--radius);text-align:center;
+}
+.quiz-result.show{display:block;animation:fadeUp 0.4s;}
+.quiz-result h4{font-family:var(--font-serif);font-size:1.2rem;margin-bottom:0.4rem;}
+.quiz-result p{font-size:0.85rem;color:var(--ink-40);margin-bottom:1rem;}
 
-body {
-  font-family: 'Wanted Sans', -apple-system, sans-serif;
-  background: var(--bg);
-  color: var(--text-primary);
-  overflow-x: hidden;
-  line-height: 1.6;
+/*═══════════════════════════════════════════
+  소셜 로그인 + 공유
+═══════════════════════════════════════════*/
+.join-sec{background:var(--white);}
+.join-card{
+  max-width:440px;margin:2rem auto 0;
+  border:1px solid var(--ink-10);border-radius:var(--radius-lg);
+  padding:2.5rem;text-align:center;
+  box-shadow:var(--shadow);
 }
+.join-card h3{font-size:1.1rem;margin-bottom:0.3rem;}
+.join-card>p{color:var(--ink-40);font-size:0.85rem;margin-bottom:1.8rem;}
+.soc-btn{
+  display:flex;align-items:center;justify-content:center;gap:0.6rem;
+  width:100%;padding:0.85rem;border:none;border-radius:10px;
+  font-size:0.9rem;font-weight:700;margin-bottom:0.6rem;
+  transition:all 0.3s;
+}
+.soc-btn:hover{transform:translateY(-1px);box-shadow:var(--shadow);}
+.soc-naver{background:#03C75A;color:white;}
+.soc-kakao{background:#FEE500;color:#3C1E1E;}
+.soc-note{font-size:0.7rem;color:var(--ink-20);margin-top:1rem;line-height:1.6;}
 
-/* ===== NAV ===== */
-.nav {
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(253,251,247,0.92);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
+.share-row{
+  display:flex;gap:0.6rem;justify-content:center;margin-top:2rem;
 }
-.nav-top {
-  max-width: 1140px; margin: 0 auto;
-  padding: 0.8rem 2rem;
-  display: flex; justify-content: space-between; align-items: center;
+.share-chip{
+  display:flex;align-items:center;gap:0.3rem;
+  padding:0.5rem 1rem;background:var(--ink-05);
+  border:1px solid var(--ink-10);border-radius:24px;
+  font-size:0.8rem;font-weight:500;color:var(--ink-60);
+  cursor:pointer;transition:all 0.3s;
 }
-.nav-brand {
-  display: flex; align-items: baseline; gap: 0.6rem;
-  text-decoration: none;
-}
-.nav-brand-main {
-  font-family: 'Nanum Myeongjo', serif;
-  font-size: 1.5rem; font-weight: 800;
-  color: var(--accent);
-  letter-spacing: -0.03em;
-}
-.nav-brand-sub {
-  font-size: 0.68rem; color: var(--text-tertiary);
-  letter-spacing: 0.05em;
-}
-.nav-right { display: flex; gap: 1.5rem; align-items: center; }
-.nav-right a {
-  font-size: 0.82rem; color: var(--text-secondary);
-  text-decoration: none; transition: color 0.3s;
-}
-.nav-right a:hover { color: var(--accent); }
-.nav-consult {
-  background: var(--accent) !important;
-  color: #fff !important;
-  padding: 0.5rem 1.2rem;
-  border-radius: 100px;
-  font-weight: 500;
-}
-.nav-consult:hover { opacity: 0.9; }
-.nav-tabs {
-  max-width: 1140px; margin: 0 auto;
-  padding: 0 2rem;
-  display: flex; gap: 0;
-  border-top: 1px solid var(--border-light);
-}
-.nav-tab {
-  padding: 0.7rem 1.5rem;
-  font-size: 0.8rem; color: var(--text-tertiary);
-  text-decoration: none;
-  border-bottom: 2px solid transparent;
-  transition: all 0.3s;
-  white-space: nowrap;
-}
-.nav-tab:hover, .nav-tab.active {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
-}
+.share-chip:hover{border-color:var(--roma);color:var(--roma);}
 
-/* ===== HERO MAGAZINE ===== */
-.hero-mag {
-  max-width: 1140px; margin: 0 auto;
-  padding: 3rem 2rem 2rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  min-height: 70vh;
-  align-items: center;
+/*═══════════════════════════════════════════
+  푸터
+═══════════════════════════════════════════*/
+footer{
+  background:var(--ink);color:rgba(255,255,255,0.5);
+  padding:3.5rem 2rem 1.5rem;
 }
-.hero-main {
-  animation: slideUp 0.8s ease;
+.footer-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:2.5rem;max-width:1080px;margin:0 auto;
 }
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  font-size: 0.72rem; color: var(--accent);
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  margin-bottom: 1.5rem;
-  background: var(--accent-bg);
-  padding: 0.4rem 1rem;
-  border-radius: 100px;
-}
-.hero-eyebrow .live-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--accent);
-  animation: blink 2s ease infinite;
-}
-.hero-headline {
-  font-family: 'Nanum Myeongjo', serif;
-  font-size: clamp(2rem, 3.5vw, 2.8rem);
-  font-weight: 800;
-  color: var(--text-primary);
-  line-height: 1.4;
-  margin-bottom: 1.2rem;
-  letter-spacing: -0.03em;
-}
-.hero-headline .em {
-  color: var(--accent);
-  text-decoration: underline;
-  text-decoration-color: rgba(184,84,26,0.25);
-  text-underline-offset: 6px;
-  text-decoration-thickness: 3px;
-}
-.hero-sub {
-  font-size: 1rem; color: var(--text-secondary);
-  line-height: 1.8; margin-bottom: 2rem;
-  max-width: 440px;
-}
-.hero-actions-b {
-  display: flex; gap: 0.8rem; align-items: center;
-  flex-wrap: wrap;
-}
-.btn-warm {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  background: var(--accent);
-  color: #fff;
-  padding: 0.9rem 2rem;
-  border-radius: 100px;
-  font-size: 0.9rem; font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s;
-  border: none; cursor: pointer;
-}
-.btn-warm:hover {
-  background: #A04815;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(184,84,26,0.2);
-}
-.btn-outline-warm {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  border: 1.5px solid var(--border);
-  color: var(--text-secondary);
-  padding: 0.85rem 1.8rem;
-  border-radius: 100px;
-  font-size: 0.9rem; font-weight: 500;
-  text-decoration: none;
-  transition: all 0.3s;
-}
-.btn-outline-warm:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+.f-brand h4{color:white;font-size:1rem;margin-bottom:0.6rem;}
+.f-brand p{font-size:0.82rem;line-height:1.7;}
+footer h5{color:rgba(255,255,255,0.8);font-size:0.72rem;letter-spacing:1.5px;margin-bottom:0.8rem;text-transform:uppercase;}
+footer a{display:block;color:rgba(255,255,255,0.45);font-size:0.82rem;margin-bottom:0.4rem;transition:color 0.3s;}
+footer a:hover{color:var(--roma-light);}
+.f-bottom{
+  text-align:center;margin-top:2.5rem;padding-top:1.5rem;
+  border-top:1px solid rgba(255,255,255,0.08);
+  font-size:0.7rem;
 }
 
-/* Hero Right - Featured Card Stack */
-.hero-cards {
-  display: flex; flex-direction: column; gap: 1rem;
-  animation: slideUp 0.8s ease 0.2s backwards;
+/*═══════════════════════════════════════════
+  챗봇
+═══════════════════════════════════════════*/
+.chat-trigger{
+  position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;
+  display:flex;align-items:center;gap:0.6rem;
+  padding:0.75rem 1.3rem 0.75rem 0.75rem;
+  background:var(--roma);color:white;
+  border:none;border-radius:40px;font-weight:700;font-size:0.85rem;
+  box-shadow:0 6px 24px rgba(139,94,52,0.35);
+  transition:all 0.3s;
 }
-.featured-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 1.8rem;
-  transition: all 0.3s;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
+.chat-trigger:hover{transform:scale(1.05);}
+.chat-trigger .ct-icon{
+  width:36px;height:36px;background:rgba(255,255,255,0.2);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;
 }
-.featured-card:hover {
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-3px);
+.chat-panel{
+  position:fixed;bottom:5.5rem;right:1.5rem;z-index:998;
+  width:380px;max-height:540px;
+  background:var(--white);border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-lg);border:1px solid var(--ink-10);
+  display:none;flex-direction:column;overflow:hidden;
 }
-.featured-card.highlight {
-  background: linear-gradient(135deg, #FDF3EC, #FFF8F3);
-  border-color: rgba(184,84,26,0.15);
+.chat-panel.open{display:flex;}
+.cp-head{
+  padding:1rem 1.2rem;background:var(--roma);color:white;
+  display:flex;justify-content:space-between;align-items:center;
 }
-.fc-row { display: flex; justify-content: space-between; align-items: flex-start; }
-.fc-badge {
-  font-size: 0.65rem; font-weight: 600;
-  padding: 0.25rem 0.65rem;
-  border-radius: 100px;
-  letter-spacing: 0.03em;
+.cp-head h4{font-size:0.9rem;display:flex;align-items:center;gap:0.4rem;}
+.cp-close{background:none;border:none;color:rgba(255,255,255,0.7);font-size:1.1rem;cursor:pointer;}
+.cp-body{flex:1;overflow-y:auto;padding:1.2rem;min-height:300px;background:var(--ink-02);}
+.cm{margin-bottom:0.8rem;max-width:88%;}
+.cm.bot{margin-right:auto;}
+.cm.user{margin-left:auto;}
+.cb{
+  display:inline-block;padding:0.7rem 1rem;
+  border-radius:14px;font-size:0.85rem;line-height:1.6;
 }
-.fc-badge.orange { background: var(--accent-bg); color: var(--accent); }
-.fc-badge.green { background: var(--green-bg); color: var(--green); }
-.fc-date { font-size: 0.7rem; color: var(--text-tertiary); }
-.fc-title {
-  font-family: 'Nanum Myeongjo', serif;
-  font-size: 1.05rem; font-weight: 700;
-  color: var(--text-primary);
-  margin: 1rem 0 0.5rem;
-  line-height: 1.5;
+.bot .cb{background:var(--white);border:1px solid var(--ink-10);color:var(--ink);}
+.user .cb{background:var(--roma);color:white;}
+.cq{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:0.6rem;}
+.cq-btn{
+  padding:0.3rem 0.7rem;background:var(--white);
+  border:1px solid var(--ink-10);border-radius:16px;
+  font-size:0.75rem;font-weight:600;color:var(--roma);
+  cursor:pointer;transition:all 0.3s;
 }
-.fc-desc {
-  font-size: 0.82rem; color: var(--text-secondary);
-  line-height: 1.6;
+.cq-btn:hover{background:var(--roma-bg);border-color:var(--roma);}
+.cp-input{
+  padding:0.8rem 1rem;border-top:1px solid var(--ink-10);
+  display:flex;gap:0.5rem;background:var(--white);
 }
-.fc-arrow {
-  position: absolute; right: 1.5rem; bottom: 1.5rem;
-  font-size: 1rem; color: var(--accent);
-  opacity: 0; transition: all 0.3s;
+.cp-input input{
+  flex:1;padding:0.6rem 0.8rem;border:1px solid var(--ink-10);
+  border-radius:8px;font-size:0.85rem;outline:none;
+  background:var(--ink-02);
 }
-.featured-card:hover .fc-arrow { opacity: 1; transform: translateX(4px); }
+.cp-input input:focus{border-color:var(--roma);background:white;}
+.cp-input button{
+  padding:0.6rem 1rem;background:var(--roma);color:white;
+  border:none;border-radius:8px;font-weight:700;font-size:0.8rem;
+  transition:background 0.3s;
+}
+.cp-input button:hover{background:var(--roma-deep);}
 
-/* ===== QUICK TOOLS BAR ===== */
-.tools-bar {
-  background: var(--bg-card);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 1.5rem 2rem;
-}
-.tools-inner {
-  max-width: 1140px; margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-}
-.tool-card {
-  display: flex; align-items: center; gap: 1rem;
-  padding: 1.2rem 1.5rem;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s;
-  border: 1px solid transparent;
-}
-.tool-card:hover {
-  background: var(--bg-warm);
-  border-color: var(--border);
-}
-.tool-icon {
-  width: 44px; height: 44px;
-  border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.2rem;
-  flex-shrink: 0;
-}
-.tool-icon.orange { background: var(--accent-bg); }
-.tool-icon.green { background: var(--green-bg); }
-.tool-icon.warm { background: #FFF3E8; }
-.tool-icon.blue { background: #EBF3FF; }
-.tool-info {}
-.tool-name {
-  font-size: 0.85rem; font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 0.15rem;
-}
-.tool-desc {
-  font-size: 0.7rem; color: var(--text-tertiary);
-}
+/*═══════════════════════════════════════════
+  ANIMATIONS
+═══════════════════════════════════════════*/
+.reveal{opacity:0;transform:translateY(20px);transition:all 0.6s cubic-bezier(0.16,1,0.3,1);}
+.reveal.vis{opacity:1;transform:translateY(0);}
 
-/* ===== CONTENT FEED ===== */
-.content-section {
-  max-width: 1140px; margin: 0 auto;
-  padding: 3rem 2rem;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 3rem;
-}
-
-/* Main Feed */
-.feed-header {
-  display: flex; justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
-.feed-title {
-  font-family: 'Nanum Myeongjo', serif;
-  font-size: 1.4rem; font-weight: 700;
-  color: var(--text-primary);
-}
-.feed-filter {
-  display: flex; gap: 0.5rem;
-}
-.filter-tag {
-  font-size: 0.72rem; padding: 0.3rem 0.9rem;
-  border-radius: 100px;
-  border: 1px solid var(--border);
-  color: var(--text-tertiary);
-  cursor: pointer; transition: all 0.3s;
-  background: transparent;
-  font-family: inherit;
-}
-.filter-tag.active, .filter-tag:hover {
-  background: var(--text-primary);
-  color: #fff;
-  border-color: var(--text-primary);
-}
-
-.feed-list { display: flex; flex-direction: column; gap: 1.2rem; }
-.feed-item {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: 14px;
-  padding: 1.8rem;
-  transition: all 0.3s;
-  cursor: pointer;
-}
-.feed-item:hover {
-  box-shadow: var(--shadow-hover);
-  border-color: var(--border);
-}
-.fi-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; }
-.fi-category {
-  font-size: 0.68rem; font-weight: 600;
-  padding: 0.2rem 0.6rem;
-  border-radius: 4px;
-}
-.fi-category.family { background: var(--accent-bg); color: var(--accent); }
-.fi-category.tax { background: var(--green-bg); color: var(--green); }
-.fi-category.hospital { background: #EBF3FF; color: #2A5DB0; }
-.fi-category.convert { background: #F5EBF8; color: #7B3FA0; }
-.fi-views { font-size: 0.7rem; color: var(--text-tertiary); }
-.fi-title {
-  font-family: 'Nanum Myeongjo', serif;
-  font-size: 1.1rem; font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
-  line-height: 1.5;
-}
-.fi-desc {
-  font-size: 0.85rem; color: var(--text-secondary);
-  line-height: 1.7;
-  display: -webkit-box; -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical; overflow: hidden;
-}
-.fi-bottom {
-  display: flex; justify-content: space-between;
-  align-items: center;
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border-light);
-}
-.fi-author {
-  display: flex; align-items: center; gap: 0.6rem;
-}
-.fi-avatar {
-  width: 28px; height: 28px;
-  border-radius: 50%;
-  background: var(--accent-bg);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.65rem; font-weight: 700; color: var(--accent);
-}
-.fi-author-name { font-size: 0.78rem; color: var(--text-secondary); }
-.fi-read-time { font-size: 0.72rem; color: var(--text-tertiary); }
-
-/* Sidebar */
-.sidebar {}
-.sidebar-block {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: 14px;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-.sb-title {
-  font-family: 'Nanum Myeongjo', serif;
-  font-size: 1rem; font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 1rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px solid var(--border-light);
-}
-
-/* CTA Sidebar */
-.sidebar-cta {
-  background: linear-gradient(145deg, #1A1A18, #2A2A25);
-  border: none; color: #fff;
-  text-align: center;
-}
-.sidebar-cta .sb-title {
-  color: #fff; border-bottom-color: rgba(255,255,255,0.1);
-}
-.sidebar-cta-desc {
-  font-size: 0.82rem; color: rgba(255,255,255,0.6);
-  line-height: 1.7; margin-bottom: 1.5rem;
-}
-.sidebar-cta-btn {
-  display: block; width: 100%;
-  padding: 0.8rem;
-  background: var(--accent);
-  color: #fff;
-  border: none; border-radius: 100px;
-  font-size: 0.85rem; font-weight: 600;
-  cursor: pointer; transition: all 0.3s;
-  font-family: inherit;
-}
-.sidebar-cta-btn:hover { background: #A04815; }
-
-/* Popular List */
-.popular-item {
-  display: flex; gap: 0.8rem; align-items: flex-start;
-  padding: 0.7rem 0;
-  border-bottom: 1px solid var(--border-light);
-  cursor: pointer;
-}
-.popular-item:last-child { border-bottom: none; }
-.popular-rank {
-  font-family: 'Nanum Myeongjo', serif;
-  font-size: 1.2rem; font-weight: 800;
-  color: var(--accent);
-  min-width: 24px;
-}
-.popular-text {
-  font-size: 0.82rem; color: var(--text-secondary);
-  line-height: 1.5;
-}
-
-/* Newsletter */
-.sidebar-nl {
-  background: var(--bg-warm);
-}
-.nl-input {
-  width: 100%;
-  padding: 0.7rem 1rem;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  font-size: 0.85rem;
-  margin-bottom: 0.6rem;
-  font-family: inherit;
-  background: #fff;
-}
-.nl-input:focus { outline: none; border-color: var(--accent); }
-.nl-btn {
-  width: 100%;
-  padding: 0.7rem;
-  background: var(--text-primary);
-  color: #fff;
-  border: none; border-radius: 8px;
-  font-size: 0.82rem; font-weight: 600;
-  cursor: pointer; transition: all 0.3s;
-  font-family: inherit;
-}
-.nl-btn:hover { background: var(--accent); }
-.nl-note {
-  font-size: 0.68rem; color: var(--text-tertiary);
-  margin-top: 0.5rem; text-align: center;
-}
-
-/* ===== CASE SHOWCASE (Magazine Style) ===== */
-.case-mag {
-  background: var(--bg-warm);
-  padding: 4rem 2rem;
-}
-.case-mag-inner {
-  max-width: 1140px; margin: 0 auto;
-}
-.case-mag-header {
-  display: flex; justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 2rem;
-}
-.case-mag-title {
-  font-family: 'Nanum Myeongjo', serif;
-  font-size: 1.6rem; font-weight: 800;
-  color: var(--text-primary);
-}
-.case-mag-sub {
-  font-size: 0.85rem; color: var(--text-tertiary);
-}
-.case-mag-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-.case-mag-card {
-  background: var(--bg-card);
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid var(--border-light);
-  transition: all 0.3s;
-  cursor: pointer;
-}
-.case-mag-card:hover {
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-4px);
-}
-.cmc-visual {
-  height: 160px;
-  display: flex; align-items: center; justify-content: center;
-  position: relative;
-}
-.cmc-visual.v1 { background: linear-gradient(135deg, #FDF3EC, #FFEEDE); }
-.cmc-visual.v2 { background: linear-gradient(135deg, #E8F5EE, #D4F0DC); }
-.cmc-visual.v3 { background: linear-gradient(135deg, #EBF3FF, #DAE8FF); }
-.cmc-number {
-  font-family: 'Nanum Myeongjo', serif;
-  font-size: 3rem; font-weight: 800;
-  opacity: 0.15; position: absolute;
-  top: 1rem; left: 1.5rem;
-}
-.cmc-icon { font-size: 3rem; position: relative; z-index: 2; }
-.cmc-body { padding: 1.5rem; }
-.cmc-type {
-  font-size: 0.68rem; font-weight: 600;
-  color: var(--accent);
-  letter-spacing: 0.05em;
-  margin-bottom: 0.5rem;
-}
-.cmc-title {
-  font-family: 'Nanum Myeongjo', serif;
-  font-size: 1.05rem; font-weight: 700;
-  line-height: 1.5;
-  margin-bottom: 0.5rem;
-}
-.cmc-result {
-  font-size: 0.82rem; color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 0.8rem;
-}
-.cmc-amount {
-  font-family: 'Nanum Myeongjo', serif;
-  font-size: 1.6rem; font-weight: 800;
-  color: var(--accent);
-}
-.cmc-unit { font-size: 0.78rem; color: var(--text-tertiary); }
-
-/* ===== SOCIAL LOGIN SECTION ===== */
-.login-section {
-  padding: 4rem 2rem;
-  text-align: center;
-  max-width: 500px; margin: 0 auto;
-}
-.login-title {
-  font-family: 'Nanum Myeongjo', serif;
-  font-size: 1.5rem; font-weight: 700;
-  margin-bottom: 0.6rem;
-}
-.login-desc {
-  font-size: 0.9rem; color: var(--text-secondary);
-  line-height: 1.7; margin-bottom: 2rem;
-}
-.login-buttons {
-  display: flex; flex-direction: column; gap: 0.8rem;
-}
-.login-btn {
-  display: flex; align-items: center; justify-content: center;
-  gap: 0.8rem;
-  padding: 0.9rem 1.5rem;
-  border-radius: 12px;
-  font-size: 0.9rem; font-weight: 500;
-  cursor: pointer; transition: all 0.3s;
-  border: 1.5px solid var(--border);
-  background: var(--bg-card);
-  font-family: inherit;
-}
-.login-btn:hover { box-shadow: var(--shadow); }
-.login-btn .icon-n {
-  width: 28px; height: 28px;
-  border-radius: 6px;
-  background: #03C75A;
-  color: #fff; font-weight: 800; font-size: 0.85rem;
-  display: flex; align-items: center; justify-content: center;
-}
-.login-btn .icon-g {
-  width: 28px; height: 28px;
-  border-radius: 6px;
-  background: #fff;
-  border: 1px solid #ddd;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 700; font-size: 0.85rem; color: #EA4335;
-}
-.login-btn .icon-k {
-  width: 28px; height: 28px;
-  border-radius: 6px;
-  background: #FEE500;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 800; font-size: 0.85rem;
-}
-
-/* ===== CONSULT CTA ===== */
-.consult-cta {
-  background: var(--text-primary);
-  padding: 4rem 2rem;
-  text-align: center;
-  color: #fff;
-}
-.consult-inner { max-width: 600px; margin: 0 auto; }
-.consult-label {
-  font-size: 0.7rem; color: var(--accent-light);
-  letter-spacing: 0.15em;
-  margin-bottom: 1rem;
-}
-.consult-title {
-  font-family: 'Nanum Myeongjo', serif;
-  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
-  font-weight: 700;
-  margin-bottom: 1rem;
-  line-height: 1.5;
-}
-.consult-desc {
-  font-size: 0.9rem; color: rgba(255,255,255,0.55);
-  line-height: 1.7; margin-bottom: 2rem;
-}
-.consult-form {
-  display: flex; gap: 0.6rem;
-  max-width: 460px; margin: 0 auto;
-}
-.consult-form input {
-  flex: 1;
-  padding: 0.85rem 1.2rem;
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 10px;
-  background: rgba(255,255,255,0.06);
-  color: #fff;
-  font-size: 0.88rem;
-  font-family: inherit;
-}
-.consult-form input::placeholder { color: rgba(255,255,255,0.35); }
-.consult-form input:focus { outline: none; border-color: var(--accent); }
-.consult-form button {
-  padding: 0.85rem 1.8rem;
-  background: var(--accent);
-  color: #fff; border: none;
-  border-radius: 10px;
-  font-size: 0.88rem; font-weight: 600;
-  cursor: pointer; transition: all 0.3s;
-  white-space: nowrap;
-  font-family: inherit;
-}
-.consult-form button:hover { background: #A04815; }
-.consult-note {
-  font-size: 0.72rem; color: rgba(255,255,255,0.35);
-  margin-top: 0.8rem;
-}
-.consult-phone {
-  margin-top: 1.5rem;
-  font-size: 0.85rem; color: rgba(255,255,255,0.5);
-}
-.consult-phone strong {
-  color: #fff;
-  font-size: 1.1rem;
-}
-
-/* ===== FOOTER ===== */
-.footer-b {
-  padding: 3rem 2rem 1.5rem;
-  border-top: 1px solid var(--border);
-}
-.footer-b-inner {
-  max-width: 1140px; margin: 0 auto;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-.fb-brand {
-  font-family: 'Nanum Myeongjo', serif;
-  font-size: 1.2rem; font-weight: 800;
-  color: var(--accent);
-  margin-bottom: 0.8rem;
-}
-.fb-info {
-  font-size: 0.78rem; color: var(--text-tertiary);
-  line-height: 1.8;
-}
-.fb-col-title {
-  font-size: 0.7rem; font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 0.8rem;
-  letter-spacing: 0.05em;
-}
-.fb-col a {
-  display: block; font-size: 0.78rem;
-  color: var(--text-tertiary);
-  text-decoration: none;
-  margin-bottom: 0.5rem;
-  transition: color 0.3s;
-}
-.fb-col a:hover { color: var(--accent); }
-.footer-b-bottom {
-  max-width: 1140px; margin: 0 auto;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border-light);
-  display: flex; justify-content: space-between;
-  font-size: 0.7rem; color: var(--text-tertiary);
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
-}
-.anim {
-  opacity: 0; transform: translateY(20px);
-  transition: all 0.7s ease;
-}
-.anim.show {
-  opacity: 1; transform: translateY(0);
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1024px) {
-  .hero-mag { grid-template-columns: 1fr; }
-  .content-section { grid-template-columns: 1fr; }
-  .case-mag-grid { grid-template-columns: 1fr 1fr; }
-  .tools-inner { grid-template-columns: 1fr 1fr; }
-  .footer-b-inner { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 768px) {
-  .nav-tabs { overflow-x: auto; }
-  .nav-right a:not(.nav-consult) { display: none; }
-  .tools-inner { grid-template-columns: 1fr; }
-  .case-mag-grid { grid-template-columns: 1fr; }
-  .consult-form { flex-direction: column; }
-  .footer-b-inner { grid-template-columns: 1fr; }
-  .case-mag-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+/*═══════════════════════════════════════════
+  RESPONSIVE
+═══════════════════════════════════════════*/
+@media(max-width:768px){
+  .nav{padding:0 1rem;}
+  .nav-links{display:none;}
+  .nav-menu-btn{display:block;}
+  section{padding:3.5rem 1.2rem;}
+  .hero{padding:6.5rem 1.2rem 3rem;}
+  .type-card{grid-template-columns:1fr;}
+  .lockin-grid{grid-template-columns:1fr;}
+  .process-track{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .chat-panel{width:calc(100vw - 1.5rem);right:0.75rem;bottom:5rem;}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-top">
-    <a href="#" class="nav-brand">
-      <span class="nav-brand-main">비더리치</span>
-      <span class="nav-brand-sub">by 세무법인로마</span>
-    </a>
-    <div class="nav-right">
-      <a href="https://youtube.com/@betherichtv" target="_blank">유튜브</a>
-      <a href="#login">로그인</a>
-      <a href="#consult" class="nav-consult">무료상담</a>
-    </div>
+<!-- ═══ NAVIGATION ═══ -->
+<nav class="nav" id="nav">
+  <a class="nav-logo" href="#">
+    <div class="nav-mark">R</div>
+    <div class="nav-name">세무법인 로마<small>가족법인 전문</small></div>
+  </a>
+  <div class="nav-links">
+    <a href="#types">법인 유형</a>
+    <a href="#why-roma">왜 로마인가</a>
+    <a href="#process">설립 절차</a>
+    <a href="#quiz">자가진단</a>
+    <button class="nav-cta" onclick="toggleChat()">무료 상담 →</button>
   </div>
-  <div class="nav-tabs">
-    <a href="#" class="nav-tab active">홈</a>
-    <a href="#feed" class="nav-tab">절세전략</a>
-    <a href="#cases" class="nav-tab">성공사례</a>
-    <a href="#" class="nav-tab">가족법인</a>
-    <a href="#" class="nav-tab">증여·상속</a>
-    <a href="#" class="nav-tab">병의원</a>
-    <a href="#tools" class="nav-tab">절세 도구</a>
-    <a href="#consult" class="nav-tab">상담신청</a>
-  </div>
+  <button class="nav-menu-btn" onclick="toggleChat()">☰</button>
 </nav>
 
-<!-- HERO MAGAZINE -->
-<section class="hero-mag">
-  <div class="hero-main">
-    <div class="hero-eyebrow">
-      <span class="live-dot"></span>
-      세무사 김국현의 자산전략 매거진
-    </div>
-    <h1 class="hero-headline">
-      부자들이 세금을 덜 내는 건<br>
-      <span class="em">구조가 다르기</span> 때문입니다
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge"><div class="badge-dot"></div> 1,200+ 법인설립 · 전문 세무사 15명</div>
+    <h1>
+      가족법인, <span class="em">설립은 시작</span>일 뿐.<br>
+      <span class="warn-line">진짜는 운영입니다.</span>
     </h1>
     <p class="hero-sub">
-      가족법인, 증여 설계, 상속 플랜 —<br>
-      고액자산가 1,000건 이상의 절세 설계 노하우를<br>
-      무료 콘텐츠로 공개합니다.
+      법인 설립만 하고 방치하면? <strong>과태료·세무조사·증여세 추징</strong>이 따라옵니다.<br>
+      세무법인 로마는 설립 → 주주총회 → 배당설계 → 세무기장까지<br>
+      <strong>법인의 전 생애를 함께</strong> 합니다.
     </p>
-    <div class="hero-actions-b">
-      <a href="#consult" class="btn-warm">
-        ✦ 내 절세 전략 상담받기
-      </a>
-      <a href="#feed" class="btn-outline-warm">
-        ▶ 콘텐츠 둘러보기
-      </a>
-    </div>
-  </div>
-  <div class="hero-cards">
-    <div class="featured-card highlight">
-      <div class="fc-row">
-        <span class="fc-badge orange">인기 콘텐츠</span>
-        <span class="fc-date">2025.03</span>
-      </div>
-      <div class="fc-title">미국주식 가족법인, 양도세·배당세 한 번에 잡는 구조</div>
-      <div class="fc-desc">미국주식 직접 투자 vs 가족법인 투자의 세금 차이를 실제 사례로 비교합니다.</div>
-      <div class="fc-arrow">→</div>
-    </div>
-    <div class="featured-card">
-      <div class="fc-row">
-        <span class="fc-badge green">새 글</span>
-        <span class="fc-date">2025.03</span>
-      </div>
-      <div class="fc-title">자녀에게 10억 넘기는 3가지 합법 루트</div>
-      <div class="fc-desc">사전증여, 가족법인 지분, 창업자금 증여 특례를 비교 분석합니다.</div>
-      <div class="fc-arrow">→</div>
+    <div class="hero-ctas">
+      <a class="btn-main" href="#types">내 유형 확인하기 →</a>
+      <button class="btn-sub" onclick="toggleChat()">AI에게 물어보기</button>
     </div>
   </div>
 </section>
 
-<!-- QUICK TOOLS -->
-<div class="tools-bar" id="tools">
-  <div class="tools-inner">
-    <div class="tool-card anim">
-      <div class="tool-icon orange">📊</div>
-      <div class="tool-info">
-        <div class="tool-name">절세 자가진단</div>
-        <div class="tool-desc">3분 진단으로 절세 포인트 확인</div>
-      </div>
-    </div>
-    <div class="tool-card anim">
-      <div class="tool-icon green">🧮</div>
-      <div class="tool-info">
-        <div class="tool-name">법인전환 시뮬레이터</div>
-        <div class="tool-desc">개인 vs 법인 세금 비교</div>
-      </div>
-    </div>
-    <div class="tool-card anim">
-      <div class="tool-icon warm">📋</div>
-      <div class="tool-info">
-        <div class="tool-name">증여세 계산기</div>
-        <div class="tool-desc">증여 금액별 예상 세금</div>
-      </div>
-    </div>
-    <div class="tool-card anim">
-      <div class="tool-icon blue">📘</div>
-      <div class="tool-info">
-        <div class="tool-name">절세 가이드북</div>
-        <div class="tool-desc">PDF 무료 다운로드</div>
-      </div>
+<!-- ═══ 경고 배너 — Lock-in 메시지 ═══ -->
+<div class="warn-banner">
+  <div class="warn-inner">
+    <h2>법인 설립 후 <span>이것을 안 하면</span> 생기는 일</h2>
+    <p>대부분의 법인은 설립 후 방치되어 문제가 발생합니다. 아래는 실제 사례입니다.</p>
+    <div class="warn-stats">
+      <div class="ws">주주총회 미개최 → <strong>과태료 500만 원</strong></div>
+      <div class="ws">의사록 미보관 → <strong>등기 거부·과태료</strong></div>
+      <div class="ws">배당 무설계 → <strong>세무조사 리스크</strong></div>
+      <div class="ws">장부 미기장 → <strong>무신고 가산세 20%</strong></div>
     </div>
   </div>
 </div>
 
-<!-- CONTENT FEED -->
-<section class="content-section" id="feed">
-  <div class="feed-main">
-    <div class="feed-header">
-      <div class="feed-title">절세 전략 콘텐츠</div>
-      <div class="feed-filter">
-        <button class="filter-tag active">전체</button>
-        <button class="filter-tag">가족법인</button>
-        <button class="filter-tag">증여·상속</button>
-        <button class="filter-tag">병의원</button>
-      </div>
+<!-- ═══ 가족법인 유형 — 무료 교육 콘텐츠 ═══ -->
+<section class="types-section" id="types">
+  <div class="sec-inner">
+    <div class="center">
+      <div class="sec-label">FAMILY CORP TYPES</div>
+      <div class="sec-title">어떤 가족법인이 필요하세요?</div>
+      <p class="sec-desc">유형별 핵심 전략과 무료 학습 콘텐츠를 제공합니다</p>
     </div>
-    <div class="feed-list">
-      <div class="feed-item anim">
-        <div class="fi-top">
-          <span class="fi-category family">가족법인</span>
-          <span class="fi-views">조회 12,480</span>
-        </div>
-        <div class="fi-title">가족법인 안 만들면 상속세 5억 더 냅니다 — 실제 시뮬레이션으로 증명</div>
-        <div class="fi-desc">
-          총 자산 30억 기준, 가족법인 유무에 따른 상속세 차이를 구체적 숫자로 비교합니다.
-          배당·급여·퇴직금 3중 구조까지 설계하면 절세 효과는 더 커집니다.
-        </div>
-        <div class="fi-bottom">
-          <div class="fi-author">
-            <div class="fi-avatar">김</div>
-            <span class="fi-author-name">세무사 김국현</span>
-          </div>
-          <span class="fi-read-time">읽는 시간 8분 · 영상 15분</span>
-        </div>
-      </div>
 
-      <div class="feed-item anim">
-        <div class="fi-top">
-          <span class="fi-category tax">증여·상속</span>
-          <span class="fi-views">조회 9,320</span>
-        </div>
-        <div class="fi-title">부모 재산 50억, 자녀에게 어떻게 넘겨야 세금이 줄까?</div>
-        <div class="fi-desc">
-          사전증여 10년 합산 규정을 활용한 3단계 증여 설계. 종신보험으로 상속세 재원을 확보하면서
-          실질 자산은 자녀에게 이전하는 구조를 설명합니다.
-        </div>
-        <div class="fi-bottom">
-          <div class="fi-author">
-            <div class="fi-avatar">김</div>
-            <span class="fi-author-name">세무사 김국현</span>
-          </div>
-          <span class="fi-read-time">읽는 시간 10분 · 영상 18분</span>
-        </div>
-      </div>
+    <div class="type-selector">
+      <button class="type-btn active" onclick="switchType('general')">일반 가족법인</button>
+      <button class="type-btn" onclick="switchType('realestate')">부동산 법인</button>
+      <button class="type-btn" onclick="switchType('usstock')">미국주식 투자법인</button>
+      <button class="type-btn" onclick="switchType('convert')">개인→법인 전환</button>
+    </div>
 
-      <div class="feed-item anim">
-        <div class="fi-top">
-          <span class="fi-category hospital">병의원</span>
-          <span class="fi-views">조회 6,150</span>
-        </div>
-        <div class="fi-title">원장님, MSO 법인 만들면 연간 1.5억 절세 가능합니다</div>
-        <div class="fi-desc">
-          개인 병원의 종합소득세 45% 구간을 MSO 법인으로 분산하는 실전 방법.
-          퇴직연금과 법인보험까지 연계하면 장기적으로 더 큰 효과를 봅니다.
-        </div>
-        <div class="fi-bottom">
-          <div class="fi-author">
-            <div class="fi-avatar">김</div>
-            <span class="fi-author-name">세무사 김국현</span>
+    <!-- 일반 가족법인 -->
+    <div class="type-panel active" id="panel-general">
+      <div class="type-card reveal">
+        <div class="tc-left">
+          <h3>🏛 일반 가족법인</h3>
+          <p class="tc-desc">소득이 높은 가장이 법인을 설립하고, 배우자·자녀를 주주·임원으로 참여시켜 소득을 분산합니다. 개인 종합소득세 최고 45% → 법인세 9~19%로 세율을 낮추는 기본 구조입니다.</p>
+          <div class="tc-who">
+            <h4>이런 분에게 추천</h4>
+            <ul class="tc-who-list">
+              <li>연 종합소득 1억 원 이상</li>
+              <li>자녀에게 합법적 자산이전을 원하는 분</li>
+              <li>퇴직금·배당 설계로 노후 준비가 필요한 분</li>
+              <li>사업소득 외 투자·임대소득이 있는 분</li>
+            </ul>
           </div>
-          <span class="fi-read-time">읽는 시간 7분 · 영상 12분</span>
+          <button class="btn-main" onclick="toggleChat()">무료 상담 신청 →</button>
         </div>
-      </div>
-
-      <div class="feed-item anim">
-        <div class="fi-top">
-          <span class="fi-category convert">법인전환</span>
-          <span class="fi-views">조회 7,800</span>
-        </div>
-        <div class="fi-title">소득세 45%, 이제 법인전환으로 끝내세요 — 현물출자 vs 양수도 비교</div>
-        <div class="fi-desc">
-          개인사업자 매출 5억 이상이라면 법인전환 타이밍입니다. 현물출자와 사업양수도 방식의
-          장단점을 세금·비용·시간 세 가지 측면에서 비교 분석합니다.
-        </div>
-        <div class="fi-bottom">
-          <div class="fi-author">
-            <div class="fi-avatar">김</div>
-            <span class="fi-author-name">세무사 김국현</span>
+        <div class="tc-right">
+          <h4>📚 무료 학습 <span class="free-tag">FREE</span></h4>
+          <div class="edu-item" onclick="openEdu('general',1)">
+            <div class="edu-num">1</div>
+            <div><h5>가족법인이란? 3분 핵심 정리</h5><p>법인 설립 이유·구조·효과를 쉽게 설명</p></div>
           </div>
-          <span class="fi-read-time">읽는 시간 6분 · 영상 14분</span>
+          <div class="edu-item" onclick="openEdu('general',2)">
+            <div class="edu-num">2</div>
+            <div><h5>지분 설계의 정석</h5><p>배우자·자녀 지분 몇 %가 최적인가</p></div>
+          </div>
+          <div class="edu-item" onclick="openEdu('general',3)">
+            <div class="edu-num">3</div>
+            <div><h5>배당 vs 급여 vs 퇴직금</h5><p>세후 실수령액 극대화 전략</p></div>
+          </div>
+          <div class="edu-item" onclick="openEdu('general',4)">
+            <div class="edu-num">4</div>
+            <div><h5>⚠️ 설립 후 반드시 해야 할 5가지</h5><p>안 하면 과태료·추징 받는 필수사항</p></div>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- 부동산 법인 -->
+    <div class="type-panel" id="panel-realestate">
+      <div class="type-card reveal vis">
+        <div class="tc-left">
+          <h3>🏠 부동산 법인</h3>
+          <p class="tc-desc">부동산을 법인 명의로 취득·관리하여 양도세 대신 법인세를 적용하고, 임대소득을 법인 내에서 관리합니다. 감정평가를 활용한 현물출자·양수도 구조를 설계합니다.</p>
+          <div class="tc-who">
+            <h4>이런 분에게 추천</h4>
+            <ul class="tc-who-list">
+              <li>보유 부동산 공시가 10억 이상</li>
+              <li>임대소득으로 종합소득세 부담이 큰 분</li>
+              <li>다주택 양도세 중과 회피가 필요한 분</li>
+              <li>자녀에게 부동산 자산승계를 계획하는 분</li>
+            </ul>
+          </div>
+          <button class="btn-main" onclick="toggleChat()">무료 상담 신청 →</button>
+        </div>
+        <div class="tc-right">
+          <h4>📚 무료 학습 <span class="free-tag">FREE</span></h4>
+          <div class="edu-item"><div class="edu-num">1</div><div><h5>부동산 법인, 개인과 뭐가 다른가</h5><p>양도세 vs 법인세 비교 분석</p></div></div>
+          <div class="edu-item"><div class="edu-num">2</div><div><h5>현물출자 vs 양수도 vs 부담부증여</h5><p>부동산 이전 3가지 방법 비교</p></div></div>
+          <div class="edu-item"><div class="edu-num">3</div><div><h5>감정평가, 왜 반드시 필요한가</h5><p>세금 절약의 핵심 열쇠</p></div></div>
+          <div class="edu-item"><div class="edu-num">4</div><div><h5>⚠️ 부동산 법인 취득세 중과 주의사항</h5><p>모르면 오히려 손해보는 포인트</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 미국주식 투자법인 -->
+    <div class="type-panel" id="panel-usstock">
+      <div class="type-card reveal vis">
+        <div class="tc-left">
+          <h3>🇺🇸 미국주식 투자법인</h3>
+          <p class="tc-desc">개인 해외주식 양도세 22% 대신, 법인세 9~19%를 적용받고, 손실 이월공제·배당 분산 등의 추가 절세 효과를 누립니다. 연간 수익 5천만 원 이상이라면 법인이 유리합니다.</p>
+          <div class="tc-who">
+            <h4>이런 분에게 추천</h4>
+            <ul class="tc-who-list">
+              <li>해외주식 연 수익 5천만 원 이상</li>
+              <li>손실 이월공제 혜택을 원하는 분</li>
+              <li>투자 수익을 가족에게 분배하고 싶은 분</li>
+              <li>장기적 자산관리 법인을 원하는 분</li>
+            </ul>
+          </div>
+          <button class="btn-main" onclick="toggleChat()">무료 상담 신청 →</button>
+        </div>
+        <div class="tc-right">
+          <h4>📚 무료 학습 <span class="free-tag">FREE</span></h4>
+          <div class="edu-item"><div class="edu-num">1</div><div><h5>미국주식, 법인으로 투자하면 뭐가 다른가</h5><p>개인 vs 법인 세금 비교</p></div></div>
+          <div class="edu-item"><div class="edu-num">2</div><div><h5>손실 이월공제, 개인은 안 되고 법인은 된다</h5><p>법인 투자의 숨은 장점</p></div></div>
+          <div class="edu-item"><div class="edu-num">3</div><div><h5>투자법인 설립 시 자본금·증권사 가이드</h5><p>실전 설립 체크리스트</p></div></div>
+          <div class="edu-item"><div class="edu-num">4</div><div><h5>⚠️ 해외금융계좌 신고 의무 (FBAR)</h5><p>미신고 시 과태료 2억 이상</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 법인전환 -->
+    <div class="type-panel" id="panel-convert">
+      <div class="type-card reveal vis">
+        <div class="tc-left">
+          <h3>🔄 개인→법인 전환</h3>
+          <p class="tc-desc">기존 개인사업자를 법인으로 전환하여 세율을 낮추고, 퇴직금 적립·대표이사 급여 설정 등 법인의 장점을 활용합니다. 사업용 자산의 포괄양수도 또는 현물출자 방식을 선택합니다.</p>
+          <div class="tc-who">
+            <h4>이런 분에게 추천</h4>
+            <ul class="tc-who-list">
+              <li>개인사업 매출 3억 이상</li>
+              <li>소득세율 35% 이상 구간인 분</li>
+              <li>퇴직금 적립으로 노후 설계가 필요한 분</li>
+              <li>병의원·약국 원장님 (MSO 법인 포함)</li>
+            </ul>
+          </div>
+          <button class="btn-main" onclick="toggleChat()">무료 상담 신청 →</button>
+        </div>
+        <div class="tc-right">
+          <h4>📚 무료 학습 <span class="free-tag">FREE</span></h4>
+          <div class="edu-item"><div class="edu-num">1</div><div><h5>법인전환, 언제 하는 게 유리한가</h5><p>타이밍을 놓치면 오히려 손해</p></div></div>
+          <div class="edu-item"><div class="edu-num">2</div><div><h5>포괄양수도 vs 현물출자 vs 신설법인</h5><p>3가지 전환 방법 비교</p></div></div>
+          <div class="edu-item"><div class="edu-num">3</div><div><h5>의사·원장님 MSO 법인 설계</h5><p>비급여 수익 법인화 전략</p></div></div>
+          <div class="edu-item"><div class="edu-num">4</div><div><h5>⚠️ 법인전환 시 놓치면 안 되는 세무 포인트</h5><p>부가세·양도세·취득세 체크리스트</p></div></div>
+        </div>
+      </div>
+    </div>
+
   </div>
+</section>
 
-  <!-- SIDEBAR -->
-  <div class="sidebar">
-    <div class="sidebar-block sidebar-cta">
-      <div class="sb-title">무료 상담 신청</div>
-      <div class="sidebar-cta-desc">
-        비더리치TV 시청자 전용<br>
-        세무사 김국현 1:1 맞춤 상담
-      </div>
-      <button class="sidebar-cta-btn" onclick="location.href='#consult'">상담 신청하기 →</button>
+<!-- ═══ 왜 로마와 함께해야 하는가 — Lock-in 핵심 ═══ -->
+<section class="lockin" id="why-roma">
+  <div class="sec-inner">
+    <div class="center">
+      <div class="sec-label">WHY ROMA</div>
+      <div class="sec-title">설립은 20%, 운영이 80%입니다</div>
+      <p class="sec-desc">법인을 만들었으면 반드시 관리해야 합니다. 안 하면 이런 일이 생깁니다.</p>
     </div>
-
-    <div class="sidebar-block">
-      <div class="sb-title">🔥 인기 콘텐츠 TOP 5</div>
-      <div class="popular-item">
-        <span class="popular-rank">1</span>
-        <span class="popular-text">가족법인 설립, 자본금 얼마가 적당할까?</span>
+    <div class="lockin-grid">
+      <!-- 좌: 리스크 -->
+      <div class="lockin-left reveal">
+        <h3>⚠️ 법인 방치 시 발생하는 문제</h3>
+        <div class="risk-item">
+          <div class="risk-icon red">📋</div>
+          <div>
+            <h5>주주총회 미개최 → 과태료 500만 원</h5>
+            <p>상법상 매년 정기주주총회 개최는 의무입니다. 의사록 없이 배당하면 세무조사 시 부인될 수 있습니다.</p>
+          </div>
+        </div>
+        <div class="risk-item">
+          <div class="risk-icon red">📊</div>
+          <div>
+            <h5>세무기장 미이행 → 무신고 가산세 20%</h5>
+            <p>법인세·부가세·원천세 신고를 누락하면 본세의 20%가 가산세로 추징됩니다.</p>
+          </div>
+        </div>
+        <div class="risk-item">
+          <div class="risk-icon orange">💰</div>
+          <div>
+            <h5>배당 무설계 → 가수금·인정상여 리스크</h5>
+            <p>체계적 배당 없이 법인 자금을 사용하면 가수금으로 잡혀 인정이자·인정상여 과세가 발생합니다.</p>
+          </div>
+        </div>
+        <div class="risk-item">
+          <div class="risk-icon orange">🛡</div>
+          <div>
+            <h5>이사회 의사록 미보관 → 등기 변경 불가</h5>
+            <p>대표이사 변경, 자본금 증자 등 중요 변경 시 이사회 의사록이 없으면 등기소에서 거부됩니다.</p>
+          </div>
+        </div>
       </div>
-      <div class="popular-item">
-        <span class="popular-rank">2</span>
-        <span class="popular-text">미국주식 양도세, 가족법인으로 줄이는 법</span>
+      <!-- 우: 로마 해결책 -->
+      <div class="lockin-right reveal">
+        <h3>로마가 대신 관리합니다</h3>
+        <p>설립 후 매년 반드시 필요한 법인 운영업무를 원스톱으로.</p>
+        <div class="mgmt-item">
+          <h5>📋 주주총회·이사회 관리 <span class="tag-must">필수</span></h5>
+          <p>연 1회 정기 + 수시 의사록 자동생성, 안건 관리, 결의 이력 보관까지.</p>
+        </div>
+        <div class="mgmt-item">
+          <h5>📊 법인 세무기장·신고 <span class="tag-must">필수</span></h5>
+          <p>법인세·부가세·원천세 신고. 전담 세무사 배정. 세무조사 대응 포함.</p>
+        </div>
+        <div class="mgmt-item">
+          <h5>💰 배당·급여·퇴직금 설계 <span class="tag-must">필수</span></h5>
+          <p>가족별 최적 소득분배 시뮬레이션. 매년 상황에 맞게 리밸런싱.</p>
+        </div>
+        <div class="mgmt-item">
+          <h5>🛡 상속세 재원설계</h5>
+          <p>법인 종신보험·사전증여를 활용한 장기 상속 플랜. 매년 리뷰.</p>
+        </div>
+        <button class="btn-main" onclick="toggleChat()">운영관리 패키지 상담 →</button>
       </div>
-      <div class="popular-item">
-        <span class="popular-rank">3</span>
-        <span class="popular-text">자녀에게 현금 증여 vs 주식 증여, 뭐가 유리?</span>
-      </div>
-      <div class="popular-item">
-        <span class="popular-rank">4</span>
-        <span class="popular-text">종신보험으로 상속세 재원 마련하기</span>
-      </div>
-      <div class="popular-item">
-        <span class="popular-rank">5</span>
-        <span class="popular-text">병의원 원장, 퇴직금 2억 만드는 구조</span>
-      </div>
-    </div>
-
-    <div class="sidebar-block sidebar-nl">
-      <div class="sb-title">📬 절세 뉴스레터</div>
-      <input type="email" class="nl-input" placeholder="이메일 주소">
-      <button class="nl-btn">무료 구독하기</button>
-      <div class="nl-note">매주 월요일 절세 인사이트 발송 · 언제든 해지 가능</div>
     </div>
   </div>
 </section>
 
-<!-- CASE SHOWCASE -->
-<section class="case-mag" id="cases">
-  <div class="case-mag-inner">
-    <div class="case-mag-header">
-      <div class="case-mag-title anim">실제 절세 설계 성공 사례</div>
-      <div class="case-mag-sub anim">개인정보 보호를 위해 가상화된 사례입니다</div>
+<!-- ═══ 프로세스 — 설립 + 운영 연결 ═══ -->
+<section class="process-sec" id="process">
+  <div class="sec-inner">
+    <div class="center">
+      <div class="sec-label">PROCESS</div>
+      <div class="sec-title">설립 5일, 그리고 매년 계속</div>
+      <p class="sec-desc">설립은 빠르게, 운영은 꾸준하게. 로마는 처음부터 끝까지 함께합니다.</p>
     </div>
-    <div class="case-mag-grid">
-      <div class="case-mag-card anim">
-        <div class="cmc-visual v1">
-          <div class="cmc-number">01</div>
-          <div class="cmc-icon">🏛</div>
-        </div>
-        <div class="cmc-body">
-          <div class="cmc-type">가족법인 설계</div>
-          <div class="cmc-title">IT기업 대표 A님, 가족법인으로 자녀 증여</div>
-          <div class="cmc-result">매출 15억 개인사업 → 가족법인 전환 + 자녀 지분 30% 설계</div>
-          <div class="cmc-amount">3.2억 <span class="cmc-unit">절세</span></div>
-        </div>
+    <div class="process-track reveal">
+      <div class="p-step">
+        <div class="p-dot">1</div>
+        <h5>무료 상담</h5>
+        <p>자산 진단<br>유형 결정</p>
       </div>
-      <div class="case-mag-card anim">
-        <div class="cmc-visual v2">
-          <div class="cmc-number">02</div>
-          <div class="cmc-icon">📋</div>
-        </div>
-        <div class="cmc-body">
-          <div class="cmc-type">상속 설계</div>
-          <div class="cmc-title">부동산 자산가 B님, 60억 자산 승계 플랜</div>
-          <div class="cmc-result">사전증여 3단계 + 종신보험 15억 재원 마련</div>
-          <div class="cmc-amount">8.7억 <span class="cmc-unit">절감</span></div>
-        </div>
+      <div class="p-step">
+        <div class="p-dot">2</div>
+        <h5>구조 설계</h5>
+        <p>지분·정관<br>임원 구성</p>
       </div>
-      <div class="case-mag-card anim">
-        <div class="cmc-visual v3">
-          <div class="cmc-number">03</div>
-          <div class="cmc-icon">🏥</div>
-        </div>
-        <div class="cmc-body">
-          <div class="cmc-type">병의원 MSO</div>
-          <div class="cmc-title">정형외과 원장 C님, MSO + 퇴직금 설계</div>
-          <div class="cmc-result">소득세 45% → MSO 분산 + 퇴직연금·법인보험 연계</div>
-          <div class="cmc-amount">1.8억 <span class="cmc-unit">연간 절세</span></div>
-        </div>
+      <div class="p-step">
+        <div class="p-dot">3</div>
+        <h5>법인 등기</h5>
+        <p>등기소 제출<br>인감 등록</p>
+      </div>
+      <div class="p-step">
+        <div class="p-dot">4</div>
+        <h5>사업자 등록</h5>
+        <p>세무서 신고<br>계좌 개설</p>
+      </div>
+      <div class="p-divider">▸</div>
+      <div class="p-step future">
+        <div class="p-dot">∞</div>
+        <h5>운영 관리</h5>
+        <p>주주총회·기장<br>배당·상속 설계</p>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:1.5rem;font-size:0.82rem;color:var(--accent);font-weight:700;">
+      ← 설립은 여기까지 (1~2주) ┃ 운영은 매년 계속됩니다 →
+    </p>
+  </div>
+</section>
+
+<!-- ═══ 자가진단 ═══ -->
+<section class="quiz-sec" id="quiz">
+  <div class="sec-inner">
+    <div class="center">
+      <div class="sec-label">SELF CHECK</div>
+      <div class="sec-title">30초 자가진단</div>
+      <p class="sec-desc">나에게 가족법인이 필요한지, 어떤 유형이 맞는지 확인하세요</p>
+    </div>
+    <div class="quiz-box reveal">
+      <div class="quiz-progress"><div class="quiz-bar" id="qBar"></div></div>
+      <div class="q-item" onclick="toggleQ(this)" data-score="general,realestate,usstock,convert">
+        <div class="q-check">✓</div>
+        <span>연 종합소득(사업+근로+임대)이 1억 원 이상이다</span>
+      </div>
+      <div class="q-item" onclick="toggleQ(this)" data-score="realestate">
+        <div class="q-check">✓</div>
+        <span>보유 부동산이 2건 이상이거나 공시가 합계 10억 이상이다</span>
+      </div>
+      <div class="q-item" onclick="toggleQ(this)" data-score="usstock">
+        <div class="q-check">✓</div>
+        <span>해외주식 투자수익이 연 5,000만 원 이상이다</span>
+      </div>
+      <div class="q-item" onclick="toggleQ(this)" data-score="general">
+        <div class="q-check">✓</div>
+        <span>자녀에게 합법적으로 자산을 이전하고 싶다</span>
+      </div>
+      <div class="q-item" onclick="toggleQ(this)" data-score="convert">
+        <div class="q-check">✓</div>
+        <span>현재 개인사업자이며, 세율이 35% 이상 구간이다</span>
+      </div>
+      <div class="q-item" onclick="toggleQ(this)" data-score="general,realestate">
+        <div class="q-check">✓</div>
+        <span>은퇴 후 자산관리 및 상속 계획이 필요하다</span>
+      </div>
+      <div class="quiz-result" id="qResult"></div>
+      <div style="text-align:center;margin-top:1.5rem;">
+        <button class="btn-main" onclick="runQuiz()">진단 결과 보기 →</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SOCIAL LOGIN -->
-<section class="login-section" id="login">
-  <div class="login-title anim">간편하게 시작하세요</div>
-  <div class="login-desc anim">
-    로그인하면 맞춤 절세 콘텐츠, 진단 기록 저장,<br>
-    전문가 상담 히스토리를 관리할 수 있습니다.
-  </div>
-  <div class="login-buttons anim">
-    <button class="login-btn">
-      <span class="icon-n">N</span>
-      네이버로 시작하기
-    </button>
-    <button class="login-btn">
-      <span class="icon-g">G</span>
-      Google로 시작하기
-    </button>
-    <button class="login-btn">
-      <span class="icon-k">💬</span>
-      카카오로 시작하기
-    </button>
-  </div>
-</section>
-
-<!-- CONSULT CTA -->
-<section class="consult-cta" id="consult">
-  <div class="consult-inner">
-    <div class="consult-label anim">CONSULTATION</div>
-    <h2 class="consult-title anim">
-      대표님 자산에 맞는<br>절세 전략, 직접 설계해 드립니다
-    </h2>
-    <div class="consult-desc anim">
-      비더리치TV 시청자분들께 초회 상담 우선 배정 중입니다.<br>
-      연락처를 남겨주시면 세무사 김국현이 직접 연락드립니다.
+<!-- ═══ 소셜 로그인 + 공유 ═══ -->
+<section class="join-sec" id="join">
+  <div class="sec-inner">
+    <div class="center">
+      <div class="sec-label">GET STARTED</div>
+      <div class="sec-title">무료 회원가입</div>
+      <p class="sec-desc">가입하면 무료 학습 콘텐츠, AI 상담, 법인 관리 대시보드를 이용할 수 있습니다</p>
     </div>
-    <div class="consult-form anim">
-      <input type="text" placeholder="성함">
-      <input type="tel" placeholder="연락처">
-      <button>상담 신청</button>
+    <div class="join-card reveal">
+      <h3>간편 로그인</h3>
+      <p>3초면 가입 완료</p>
+      <button class="soc-btn soc-naver" onclick="alert('Naver OAuth 2.0 백엔드 연동 필요\n→ developers.naver.com/docs/login/overview')">
+        <strong style="font-size:1.1rem;">N</strong> 네이버로 시작하기
+      </button>
+      <button class="soc-btn soc-kakao" onclick="alert('Kakao OAuth 2.0 백엔드 연동 필요\n→ developers.kakao.com/docs/latest/ko/kakaologin/common')">
+        <strong style="font-size:1.1rem;">K</strong> 카카오로 시작하기
+      </button>
+      <p class="soc-note">
+        ※ OAuth 2.0 인증 방식. 개인정보는 서버에서 안전하게 처리됩니다.<br>
+        실제 서비스 시 백엔드(Naver/Kakao OAuth) 연동이 필요합니다.
+      </p>
     </div>
-    <div class="consult-note anim">법인/병의원 기장이전 상담은 무료 · 서울 서초구 강남빌딩 9층</div>
-    <div class="consult-phone anim">
-      빠른 상담 <strong>010-4549-4900</strong>
+    <div class="share-row">
+      <button class="share-chip" onclick="alert('카카오 JavaScript SDK 연동 필요\n→ developers.kakao.com/docs/latest/ko/message/js-link')">💬 카카오톡 공유</button>
+      <button class="share-chip" onclick="window.open('https://share.naver.com/web/shareView?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent('세무법인 로마 - 가족법인 전문'))">📗 네이버 공유</button>
+      <button class="share-chip" onclick="navigator.clipboard.writeText(location.href).then(()=>alert('링크가 복사되었습니다!'))">🔗 링크 복사</button>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="footer-b">
-  <div class="footer-b-inner">
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-grid">
+    <div class="f-brand">
+      <h4>세무법인 로마</h4>
+      <p>고액자산가의 자산 보호와 세대 간 승계를 돕는 전문 세무법인. 가족법인 설립부터 운영관리까지 원스톱.</p>
+    </div>
     <div>
-      <div class="fb-brand">비더리치</div>
-      <div class="fb-info">
-        세무법인 로마 · 대표세무사 김국현<br>
-        서울특별시 서초구 서초대로396 강남빌딩 9층 906호<br>
-        (주)비더리치 · 사업자등록번호 250-87-02720<br>
-        Tel. 010-4549-4900
-      </div>
+      <h5>서비스</h5>
+      <a href="#">가족법인 설립</a>
+      <a href="#">주주총회·이사회</a>
+      <a href="#">배당·급여 설계</a>
+      <a href="#">상속세 재원설계</a>
     </div>
-    <div class="fb-col">
-      <div class="fb-col-title">서비스</div>
-      <a href="#">가족법인 설계</a>
-      <a href="#">증여·상속 플랜</a>
-      <a href="#">병의원 세무</a>
-      <a href="#">법인전환</a>
-    </div>
-    <div class="fb-col">
-      <div class="fb-col-title">콘텐츠</div>
-      <a href="https://youtube.com/@betherichtv">유튜브</a>
+    <div>
+      <h5>콘텐츠</h5>
       <a href="#">블로그</a>
-      <a href="#">절세가이드북</a>
-      <a href="#">뉴스레터</a>
+      <a href="#">유튜브</a>
+      <a href="#">인스타그램</a>
+      <a href="#">세미나 신청</a>
     </div>
-    <div class="fb-col">
-      <div class="fb-col-title">고객지원</div>
-      <a href="#">상담 신청</a>
-      <a href="#">FAQ</a>
-      <a href="#">개인정보처리방침</a>
-      <a href="#">이용약관</a>
+    <div>
+      <h5>문의</h5>
+      <a href="#">02-XXX-XXXX</a>
+      <a href="#">roma@taxroma.com</a>
+      <a href="#">서울 강남구 OO로</a>
     </div>
   </div>
-  <div class="footer-b-bottom">
-    <span>© 2026 세무법인 로마 · (주)비더리치. All rights reserved.</span>
-    <span>개인정보처리방침 · 이용약관</span>
-  </div>
+  <div class="f-bottom">© 2025 세무법인 로마. All rights reserved. | 사업자등록번호 XXX-XX-XXXXX</div>
 </footer>
 
+<!-- ═══ 챗봇 ═══ -->
+<button class="chat-trigger" id="chatTrigger" onclick="toggleChat()">
+  <div class="ct-icon">💬</div>
+  AI 상담
+</button>
+<div class="chat-panel" id="chatPanel">
+  <div class="cp-head">
+    <h4>🏛 로마 AI 상담</h4>
+    <button class="cp-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="cp-body" id="cpBody">
+    <div class="cm bot">
+      <div class="cb">
+        안녕하세요! 세무법인 로마 AI 상담입니다 😊<br>
+        가족법인에 대해 궁금한 점을 물어보세요.<br><br>
+        <strong>어떤 유형에 관심 있으세요?</strong>
+      </div>
+      <div class="cq">
+        <button class="cq-btn" onclick="sq('일반 가족법인이 궁금해요')">🏛 일반 가족법인</button>
+        <button class="cq-btn" onclick="sq('부동산 법인이 궁금해요')">🏠 부동산 법인</button>
+        <button class="cq-btn" onclick="sq('미국주식 투자법인이 궁금해요')">🇺🇸 미국주식 법인</button>
+        <button class="cq-btn" onclick="sq('개인사업자 법인전환이 궁금해요')">🔄 법인전환</button>
+        <button class="cq-btn" onclick="sq('설립 비용이 궁금해요')">💰 설립 비용</button>
+        <button class="cq-btn" onclick="sq('주주총회를 꼭 해야 하나요')">📋 주주총회 의무</button>
+        <button class="cq-btn" onclick="sq('상담 예약하고 싶어요')">📞 상담 예약</button>
+      </div>
+    </div>
+  </div>
+  <div class="cp-input">
+    <input id="cpIn" placeholder="궁금한 점을 입력하세요..." onkeydown="if(event.key==='Enter')sc()">
+    <button onclick="sc()">전송</button>
+  </div>
+</div>
+
 <script>
-// Scroll animations
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) e.target.classList.add('show');
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.anim').forEach(el => obs.observe(el));
-
-// Filter tags
-document.querySelectorAll('.filter-tag').forEach(tag => {
-  tag.addEventListener('click', () => {
-    document.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
-    tag.classList.add('active');
-  });
+/*═══════════════════════════════════════════
+  NAV SCROLL EFFECT
+═══════════════════════════════════════════*/
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50);
 });
 
-// Nav tab active state
-document.querySelectorAll('.nav-tab').forEach(tab => {
-  tab.addEventListener('click', (e) => {
-    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
+/*═══════════════════════════════════════════
+  TYPE SWITCHER
+═══════════════════════════════════════════*/
+function switchType(type){
+  document.querySelectorAll('.type-btn').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.type-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-'+type).classList.add('active');
+}
+
+/*═══════════════════════════════════════════
+  무료 교육 콘텐츠 클릭 (MVP에서는 모달/페이지 대신 챗봇 연결)
+═══════════════════════════════════════════*/
+const eduContent = {
+  'general-1': '가족법인이란, 가족 구성원(배우자·자녀)이 주주·임원으로 참여하는 법인입니다.\n\n핵심 효과:\n① 소득 분산 → 종합소득세 누진세율(최고 45%) 회피\n② 법인세율 적용 → 2억 이하 9%, 200억 이하 19%\n③ 퇴직금 적립 → 소득세 절감 + 노후 준비\n④ 자녀 지분을 통한 합법적 자산이전\n\n💡 더 자세한 내용은 전문 세무사와 무료 상담을 통해 확인하세요.',
+  'general-2': '지분 설계의 핵심 원칙:\n\n① 대표(본인): 보통 50~70% (경영권 확보)\n② 배우자: 20~30% (배당소득 분산)\n③ 자녀: 10~20% (장기 자산이전)\n\n주의사항:\n- 미성년 자녀 지분은 증여세 이슈 확인 필요\n- 특수관계인 간 저가 양도 시 부당행위계산부인 리스크\n- 의결권 vs 배당권을 분리하는 종류주식도 검토\n\n💡 구체적인 지분 비율은 자산 규모에 따라 달라집니다. 상담을 통해 최적 비율을 설계해 드립니다.',
+  'general-3': '세후 실수령액 극대화 전략:\n\n① 급여: 근로소득공제 적용, 4대보험 부담 있음\n② 배당: 2,000만 원까지 15.4% 분리과세 (금융소득종합과세 주의)\n③ 퇴직금: 퇴직소득세 분리과세, 근속연수에 따라 세율↓\n\n최적 조합 예시 (연 1억 기준):\n- 급여 4,000만 원 + 배당 2,000만 원 + 퇴직적립 4,000만 원\n→ 실효세율 약 15~18% (개인사업 시 약 33%)\n\n💡 가족 수와 소득 규모에 따라 최적 비율이 달라집니다.',
+  'general-4': '⚠️ 설립 후 반드시 해야 할 5가지:\n\n1. 정기주주총회 개최 (매년 3월 내) - 미개최 시 과태료 500만 원\n2. 법인세 신고 (3월) - 미신고 시 무신고가산세 20%\n3. 부가세 신고 (분기별) - 미신고 시 가산세\n4. 원천세 신고 (매월) - 급여·배당 지급 시 필수\n5. 주주명부·의사록 보관 - 세무조사 시 필수 제출 서류\n\n🔴 이 5가지를 매년 빠짐없이 해야 합니다.\n세무법인 로마의 운영관리 패키지는 이 모든 것을 대신 처리합니다.',
+};
+function openEdu(type,num){
+  const key = type+'-'+num;
+  const content = eduContent[key];
+  if(content){
+    toggleChat();
+    setTimeout(()=>{addMsg(content,'bot');},300);
+  } else {
+    toggleChat();
+    setTimeout(()=>{addMsg('해당 콘텐츠는 준비 중입니다. 전문 세무사에게 직접 문의해 주세요!\n📞 02-XXX-XXXX','bot');},300);
+  }
+}
+
+/*═══════════════════════════════════════════
+  CHATBOT
+═══════════════════════════════════════════*/
+function toggleChat(){
+  document.getElementById('chatPanel').classList.toggle('open');
+}
+
+const responses = {
+  '일반 가족법인': '일반 가족법인은 가장 기본적인 형태로, 소득 분산과 절세가 핵심입니다.\n\n✅ 법인세 9%(2억 이하) vs 소득세 최고 45%\n✅ 가족 급여·배당으로 소득 분산\n✅ 퇴직금 적립으로 노후 준비\n✅ 자녀 지분으로 합법적 자산이전\n\n⚠️ 단, 설립 후 주주총회·세무기장·배당설계를 매년 해야 합니다. 이걸 안 하면 과태료와 세무조사 리스크가 생깁니다.\n\n무료 상담으로 정확한 절세 효과를 확인해 보시겠어요?',
+  '부동산 법인': '부동산 법인은 양도세 대신 법인세를 적용받는 구조입니다.\n\n✅ 개인 양도세 최고 75%(다주택) → 법인세 9~19%\n✅ 임대소득 법인 내 관리로 종합소득세 절감\n✅ 감정평가 활용 시 추가 절세 가능\n\n⚠️ 주의: 법인 취득세 중과(12%) 적용 여부를 반드시 확인해야 합니다. 지역·용도에 따라 중과 제외 가능.\n\n📞 무료 상담에서 취득세 중과 여부까지 진단해 드립니다.',
+  '미국주식': '미국주식 투자법인은 연 수익 5천만 원 이상일 때 유리합니다.\n\n✅ 개인 양도세 22% → 법인세 9%(2억 이하)\n✅ 손실 이월공제 가능 (개인은 불가!)\n✅ 배당 분산으로 추가 절세\n\n⚠️ 해외금융계좌 5억 이상 보유 시 FBAR 신고 의무 있음. 미신고 시 과태료 최대 2억 원.\n\n투자 규모를 알려주시면 절세 시뮬레이션을 해드릴 수 있어요.',
+  '법인전환': '개인사업자 → 법인전환은 매출 3억 이상일 때 본격 검토하세요.\n\n전환 방법 3가지:\n① 포괄양수도 - 가장 일반적, 기존 사업 승계\n② 현물출자 - 자산가치 인정, 감정평가 필요\n③ 신설법인 - 새로 시작, 기존 사업 별도 정리\n\n⚠️ 전환 시점의 세무 처리(부가세·양도세·취득세)가 핵심입니다. 타이밍을 잘못 잡으면 오히려 세금이 늘어날 수 있어요.\n\n📞 무료 상담에서 최적 전환 시기를 진단해 드립니다.',
+  '설립 비용': '가족법인 설립 비용 안내:\n\n📌 세무법인 로마 설립 대행: 80~150만 원\n📌 등록면허세: 약 13~15만 원\n📌 법무사 수수료: 약 30~50만 원\n📌 자본금: 100만 원부터 가능 (업종에 따라 상이)\n\n💡 총 비용: 약 200~350만 원 수준\n\n⚠️ 중요한 건 설립 비용보다 "설립 후 연간 운영 비용"입니다.\n주주총회·세무기장·배당설계를 전문가에게 맡기면 연간 관리비가 발생하지만, 이를 통해 절세하는 금액이 훨씬 큽니다.\n\n무료 상담에서 정확한 견적을 안내드릴까요?',
+  '주주총회': '주주총회는 법인이라면 반드시 해야 합니다!\n\n📋 정기주주총회 (매년 1회, 사업연도 종료 후 3개월 내)\n→ 재무제표 승인, 이사 선임, 배당 결정\n\n📋 임시주주총회 (필요 시)\n→ 정관 변경, 자본금 증자, 합병 등\n\n⚠️ 주주총회 안 하면?\n- 과태료 최대 500만 원\n- 의사록 없는 배당 → 세무조사 시 부인\n- 등기 변경 시 제출 불가\n\n🔴 이게 바로 "설립만 하면 안 되는" 이유입니다.\n세무법인 로마는 의사록 자동 생성부터 안건 관리까지 대신 처리합니다.',
+  '상담': '무료 상담 예약을 도와드리겠습니다! 😊\n\n📞 전화상담: 02-XXX-XXXX (평일 9시~18시)\n📱 카카오톡: @세무법인로마\n🏢 방문상담: 서울 강남구 OO로 (예약 필요)\n\n상담 시 아래 정보를 미리 준비해 주시면 더 정확한 진단이 가능합니다:\n✓ 연 종합소득 규모\n✓ 보유 자산(부동산 등) 현황\n✓ 가족 구성원 수\n✓ 관심 있는 법인 유형',
+};
+
+function sc(){
+  const i=document.getElementById('cpIn');
+  const m=i.value.trim();
+  if(!m)return;
+  addMsg(m,'user');
+  i.value='';
+  setTimeout(()=>{
+    let r='좋은 질문입니다! 이 부분은 고객님 상황에 따라 달라질 수 있어요.\n\n정확한 답변을 위해 전문 세무사와의 무료 상담을 추천드립니다.\n📞 02-XXX-XXXX\n📱 카카오톡: @세무법인로마';
+    for(const[k,v]of Object.entries(responses)){
+      if(m.includes(k)){r=v;break;}
+    }
+    addMsg(r,'bot');
+  },700);
+}
+
+function sq(m){
+  addMsg(m,'user');
+  setTimeout(()=>{
+    let r='';
+    for(const[k,v]of Object.entries(responses)){
+      if(m.includes(k)){r=v;break;}
+    }
+    if(!r) r='해당 내용에 대해 안내드리겠습니다. 전문 세무사 상담을 통해 더 정확한 답변을 받아보세요!\n📞 02-XXX-XXXX';
+    addMsg(r,'bot');
+  },700);
+}
+
+function addMsg(t,c){
+  const b=document.getElementById('cpBody');
+  const d=document.createElement('div');
+  d.className='cm '+c;
+  d.innerHTML='<div class="cb">'+t.replace(/\n/g,'<br>')+'</div>';
+  b.appendChild(d);
+  b.scrollTop=b.scrollHeight;
+}
+
+/*═══════════════════════════════════════════
+  QUIZ
+═══════════════════════════════════════════*/
+function toggleQ(el){
+  el.classList.toggle('on');
+  const total=document.querySelectorAll('.q-item').length;
+  const checked=document.querySelectorAll('.q-item.on').length;
+  document.getElementById('qBar').style.width=(checked/total*100)+'%';
+}
+
+function runQuiz(){
+  const items=document.querySelectorAll('.q-item.on');
+  const count=items.length;
+  // 유형 점수 집계
+  const scores={general:0,realestate:0,usstock:0,convert:0};
+  items.forEach(el=>{
+    const cats=el.dataset.score.split(',');
+    cats.forEach(c=>{ if(scores[c]!==undefined) scores[c]++; });
   });
-});
+  // 최다 유형 찾기
+  const typeNames={general:'일반 가족법인',realestate:'부동산 법인',usstock:'미국주식 투자법인',convert:'개인→법인 전환'};
+  const topType=Object.entries(scores).sort((a,b)=>b[1]-a[1])[0];
+  
+  const r=document.getElementById('qResult');
+  r.classList.add('show');
+  
+  if(count>=4){
+    r.style.background='var(--accent-bg)';
+    r.innerHTML='<h4 style="color:var(--accent);">🔴 가족법인이 강력히 추천됩니다</h4><p>'+count+'개 항목 해당. 추천 유형: <strong style="color:var(--roma);">'+typeNames[topType[0]]+'</strong></p><p style="font-size:0.8rem;color:var(--ink-40);">설립뿐 아니라 주주총회·세무기장·배당설계까지 전문가 관리가 필수입니다.</p><button class="btn-main" style="margin-top:1rem;" onclick="toggleChat()">무료 상담 시작 →</button>';
+  } else if(count>=2){
+    r.style.background='var(--warn-bg)';
+    r.innerHTML='<h4 style="color:var(--warn);">🟡 전문가 상담을 권장합니다</h4><p>'+count+'개 항목 해당. 관심 유형: <strong style="color:var(--roma);">'+typeNames[topType[0]]+'</strong></p><button class="btn-main" style="margin-top:1rem;" onclick="toggleChat()">상담 시작 →</button>';
+  } else {
+    r.style.background='var(--ink-02)';
+    r.innerHTML='<h4>🟢 현재는 선택사항입니다</h4><p>'+count+'개 항목 해당. 미래 계획이 있다면 미리 알아두세요.</p><button class="btn-sub" style="margin-top:1rem;" onclick="toggleChat()">AI에게 더 물어보기</button>';
+  }
+}
+
+/*═══════════════════════════════════════════
+  SCROLL REVEAL
+═══════════════════════════════════════════*/
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 </script>
 </body>
 </html>
